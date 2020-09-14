@@ -11,6 +11,18 @@ services:
     - 80:80
     depends_on:
       - db
+  node:
+    image: library/node:14.5
+    env_file: .env
+    restart: always
+    volumes:
+      - ./src:/app
+    working_dir: /app
+    command: npm start
+    depends_on:
+      - db
+    ports:
+      - 8000:80
   db:
     image: library/mariadb:10.5.5
     env_file: .env
