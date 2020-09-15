@@ -1,11 +1,20 @@
 'use strict'
 
 const express = require('express')
+const models = require("./models")
+const middleware = require("./middleware")
+
 const app = express()
 const port = process.env.SERVER_PORT
 
+middleware.Init(app, models)
+
 app.get("/", (req, res) => {
   res.send("running")
+})
+
+app.get("/ping", (req, res) => {
+  res.send("PONG")
 })
 
 app.listen(port, () => {
