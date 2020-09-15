@@ -29,7 +29,11 @@ module.exports = {
         }
       },
       date: {
+        allowNull: false,
         type: Sequelize.DATE
+      },
+      data: {
+        type: Sequelize.JSON
       },
       createdAt: {
         allowNull: false,

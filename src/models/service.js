@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Service.init({
-    date: DataTypes.DATE
+    date: DataTypes.DATE,
+    data: DataTypes.JSON,
   }, {
     sequelize,
     modelName: 'Service',
