@@ -1,13 +1,20 @@
+const bodyParser = require('body-parser')
+const models = require("../models")
+
 const publicRoutes = [
-  "/"
+  "/",
 ]
 
-module.exports.Init = (app, models) => {
+module.exports.Init = app => {
+  app.use(bodyParser.json())
+
+  // logging
   app.use((req, res, next) => {
     console.log(`Received request: ${req.path}`)
     next()
   })
 
+  // User lookup
   app.use((req, res, next) => {
     let key = req.headers["authentication-key"]
     if (!key) {
@@ -24,6 +31,7 @@ module.exports.Init = (app, models) => {
       })
   })
 
+  // Route permissions
   app.use((req, res, next) => {
     if (!req.User) {
       if (publicRoutes.includes(req.path)) {

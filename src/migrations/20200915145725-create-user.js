@@ -10,11 +10,12 @@ module.exports = {
       },
       email: {
         allowNull: false,
+        unique: true,
         type: Sequelize.STRING
       },
       apiKey: {
         allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
+        unique: true,
         type: Sequelize.UUID
       },
       createdAt: {

@@ -1,13 +1,15 @@
 'use strict'
 
 const express = require('express')
-const models = require("./models")
-const middleware = require("./middleware")
+const middleware = require('./middleware')
+const routes = require('./router')
 
 const app = express()
 const port = process.env.SERVER_PORT
 
-middleware.Init(app, models)
+middleware.Init(app)
+
+app.use("/users", routes.users)
 
 app.get("/", (req, res) => {
   res.send("running")
