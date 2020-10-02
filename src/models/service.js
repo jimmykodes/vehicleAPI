@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Vehicle, {
         onDelete: "CASCADE"
       })
+      this.belongsTo(models.User, {
+        onDelete: "CASCADE"
+      })
       this.belongsTo(models.ServiceType, {
         onDelete: "CASCADE"
       })
@@ -18,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   Service.init({
     date: DataTypes.DATE,
     data: DataTypes.JSON,
+    odometer: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Service',

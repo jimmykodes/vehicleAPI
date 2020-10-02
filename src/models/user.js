@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.ServiceType, {
         onDelete: "CASCADE"
       })
+      this.hasMany(models.Service, {
+        onDelete: "CASCADE"
+      })
       this.hasMany(models.Vehicle, {
         onDelete: "CASCADE"
       })

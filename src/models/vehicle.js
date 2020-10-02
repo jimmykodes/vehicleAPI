@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Service, {
         onDelete: "CASCADE"
       })
-      this.belongsTo(models.User)
+      this.belongsTo(models.User, {
+        onDelete: "CASCADE"
+      })
     }
   }
 

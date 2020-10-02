@@ -8,9 +8,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userID: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+          key: 'id',
+        }
+      },
       vehicleID: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
         references: {
           model: {
             tableName: 'Vehicles',
@@ -21,12 +33,17 @@ module.exports = {
       serviceTypeID: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
         references: {
           model: {
             tableName: 'ServiceTypes',
           },
           key: 'id',
         }
+      },
+      odometer: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
       },
       date: {
         allowNull: false,
@@ -37,10 +54,12 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
+        defaultValue: Sequelize.fn("NOW"),
         type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
+        defaultValue: Sequelize.fn("NOW"),
         type: Sequelize.DATE
       }
     });

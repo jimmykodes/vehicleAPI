@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   class ServiceType extends Model {
     // called by models/index.js
     static associate(models) {
-      this.belongsTo(models.User)
+      this.belongsTo(models.User, {
+          onDelete: "CASCADE"
+        })
     }
   }
 
