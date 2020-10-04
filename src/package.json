@@ -21,6 +21,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
     "sequelize-cli": "^6.2.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "trailingComma": "all",
+    "bracketSpacing": false
   }
 }

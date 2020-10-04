@@ -6,48 +6,48 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       userID: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
         references: {
           model: {
             tableName: 'Users',
           },
           key: 'id',
-        }
+        },
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       make: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       model: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       year: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW"),
-        type: Sequelize.DATE
+        defaultValue: Sequelize.fn('NOW'),
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW"),
-        type: Sequelize.DATE
-      }
+        defaultValue: Sequelize.fn('NOW'),
+        type: Sequelize.DATE,
+      },
     })
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Vehicles')
-  }
+  },
 }

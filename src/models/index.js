@@ -9,13 +9,12 @@ const db = {}
 let sequelize = new Sequelize(process.env.MYSQL_DATABASE, process.env.MYSQL_USER, process.env.MYSQL_PASSWORD, {
   host: process.env.MYSQL_HOST,
   port: process.env.MYSQL_PORT,
-  dialect: "mysql",
+  dialect: 'mysql',
 })
 
-fs
-  .readdirSync(__dirname)
+fs.readdirSync(__dirname)
   .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js')
+    return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
   })
   .forEach(file => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)

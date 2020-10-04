@@ -1,30 +1,31 @@
 'use strict'
-const {
-  Model
-} = require('sequelize')
+const {Model} = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Service extends Model {
     // called by models/index.js
     static associate(models) {
       this.belongsTo(models.Vehicle, {
-        onDelete: "CASCADE"
+        onDelete: 'CASCADE',
       })
       this.belongsTo(models.User, {
-        onDelete: "CASCADE"
+        onDelete: 'CASCADE',
       })
       this.belongsTo(models.ServiceType, {
-        onDelete: "CASCADE"
+        onDelete: 'CASCADE',
       })
     }
   }
 
-  Service.init({
-    date: DataTypes.DATE,
-    data: DataTypes.JSON,
-    odometer: DataTypes.INTEGER,
-  }, {
-    sequelize,
-    modelName: 'Service',
-  })
+  Service.init(
+    {
+      date: DataTypes.DATE,
+      data: DataTypes.JSON,
+      odometer: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'Service',
+    },
+  )
   return Service
 }

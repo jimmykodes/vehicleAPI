@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Services', {
@@ -6,40 +6,38 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       userID: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
         references: {
           model: {
             tableName: 'Users',
           },
           key: 'id',
-        }
+        },
       },
       vehicleID: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
         references: {
           model: {
             tableName: 'Vehicles',
           },
           key: 'id',
-        }
+        },
       },
       serviceTypeID: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
         references: {
           model: {
             tableName: 'ServiceTypes',
           },
           key: 'id',
-        }
+        },
       },
       odometer: {
         allowNull: false,
@@ -47,24 +45,24 @@ module.exports = {
       },
       date: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       data: {
-        type: Sequelize.JSON
+        type: Sequelize.JSON,
       },
       createdAt: {
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW"),
-        type: Sequelize.DATE
+        defaultValue: Sequelize.fn('NOW'),
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW"),
-        type: Sequelize.DATE
-      }
-    });
+        defaultValue: Sequelize.fn('NOW'),
+        type: Sequelize.DATE,
+      },
+    })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Services');
-  }
-};
+    await queryInterface.dropTable('Services')
+  },
+}

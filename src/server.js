@@ -5,21 +5,21 @@ const middleware = require('./middleware')
 const routes = require('./router')
 
 const app = express()
-const port = process.env.SERVER_PORT
+const port = process.env.SERVER_PORT || 80
 
 middleware.Init(app)
 
-app.use("/users", routes.users)
-app.use("/services", routes.services)
-app.use("/serviceTypes", routes.serviceTypes)
-app.use("/vehicles", routes.vehicles)
+app.use('/users', routes.users)
+app.use('/services', routes.services)
+app.use('/serviceTypes', routes.serviceTypes)
+app.use('/vehicles', routes.vehicles)
 
-app.get("/", (req, res) => {
-  res.send("running\n")
+app.get('/', (req, res) => {
+  res.send('running\n')
 })
 
-app.get("/ping", (req, res) => {
-  res.send("PONG\n")
+app.get('/ping', (req, res) => {
+  res.send('PONG\n')
 })
 
 app.listen(port, () => {
