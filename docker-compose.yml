@@ -1,22 +1,22 @@
 version: '3'
 services:
   api:
-    build: .
-    command: bash -c "gunicorn -w 2 -b :80 main:app"
+    image: library/node:14.5
     env_file: .env
     restart: always
     volumes:
-    - ./:/app
-    ports:
-    - 80:80
+      - ./src:/app
+    working_dir: /app
+    command: npm start
     depends_on:
       - db
+    ports:
+      - 80:80
   db:
     image: library/mariadb:10.5.5
     env_file: .env
     restart: always
     volumes:
-    - ./dbinit:/docker-entrypoint-initdb.d:ro
     - ./var/db/data:/var/lib/mysql
     ports:
       - 3306:3306
