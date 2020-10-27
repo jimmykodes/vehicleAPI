@@ -1,10 +1,15 @@
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const models = require('../models')
 
 const publicRoutes = ['/', '/ping']
-
+const corsOptions = {
+  origin: '*'
+}
 module.exports.Init = app => {
   app.use(bodyParser.json())
+  app.use(cors(corsOptions))
+  app.options('*', cors(corsOptions))
 
   // logging
   app.use((req, res, next) => {
